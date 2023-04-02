@@ -5,5 +5,9 @@ export var Gender;
     Gender[Gender["FEMALE"] = 2] = "FEMALE";
     Gender[Gender["NON_BINARY"] = 3] = "NON_BINARY";
 })(Gender || (Gender = {}));
+export var Country;
+(function (Country) {
+    Country[Country["TAIWAN"] = 1] = "TAIWAN";
+})(Country || (Country = {}));
 export default class Record extends autoImplements() {
 }

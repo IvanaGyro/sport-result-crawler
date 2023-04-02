@@ -8,6 +8,10 @@ export enum Gender {
   NON_BINARY = 3,
 }
 
+export enum Country {
+  TAIWAN = 1,
+}
+
 interface RecordParameters {
   id: string;
   event: Event;
@@ -15,6 +19,8 @@ interface RecordParameters {
   gender: Gender;
   isTrans: boolean;
   age: number;
+  country: Country;
+  institution?: string;
   rank: number;
   score: number;
 }

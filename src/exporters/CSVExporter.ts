@@ -99,6 +99,7 @@ export default class CSVExporter {
         isTrans: curRecord.isTrans ? '是' : '不是',
         age: numberToString(curRecord.age),
         country: countryToString(curRecord.country),
+        institution: curRecord.institution,
         rank: numberToString(curRecord.rank),
         score: numberToString(curRecord.score),
       };
@@ -126,6 +127,7 @@ export default class CSVExporter {
         { key: 'isTrans', header: '是跨性別' },
         { key: 'age', header: '年齡' },
         { key: 'country', header: '國籍' },
+        { key: 'institution', header: '代表機構' },
         { key: 'rank', header: '名次' },
         { key: 'score', header: '成績' },
       ],

@@ -19,6 +19,12 @@ export var Category;
     Category[Category["MIXED"] = 3] = "MIXED";
     Category[Category["OPEN"] = 4] = "OPEN";
 })(Category || (Category = {}));
+export var Round;
+(function (Round) {
+    Round[Round["PRELIMINARY"] = 1] = "PRELIMINARY";
+    Round[Round["SEMI_FINAL"] = 2] = "SEMI_FINAL";
+    Round[Round["FINAL"] = 3] = "FINAL";
+})(Round || (Round = {}));
 /**
  * Class of sport events
  */
