@@ -1,4 +1,4 @@
-# Traffic Accient Analyzer
+# Athletics Record Crawler
 
 ## 資料夾結構
 
@@ -51,17 +51,7 @@ https://our.subdomain.contains.a.lot.of.words.and.exceeds.seventy.two.characters
 ## 里程碑
 
 - [ ] 使用 Git hook 檢查 commit 訊息和程式碼格式
-- [ ] 依照道路交通事故調查報告表設計資料格式
 - [ ] 設計 SQL schema 並暫時使用 sqlite 做資料庫
-- [ ] 台北資料爬蟲
-- [ ] 台中資料爬蟲
-- [ ] 台南資料爬蟲
-- [ ] 警政署資料爬蟲
-- [ ] 台北 CSV 解析器（從 Python 重寫）
-- [ ] 桃園 CSV 解析器
-- [ ] 台中 CSV 解析器
-- [ ] 台南 CSV 解析器
-- [ ] 警政署資料解析器（從 Python 重寫）
 - [ ] 前端報表
 - [ ] docker compose 打包開發與部屬環境
 - [ ] 部屬到 AWS 或 Azure
