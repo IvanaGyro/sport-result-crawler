@@ -1,0 +1,14 @@
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+### Node.js ###
+node_modules/
+yarn-error.log
+
+### Project ###
+/data/
+/outputs/
+

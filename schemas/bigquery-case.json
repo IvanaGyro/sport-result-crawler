@@ -1,0 +1,142 @@
+[
+    {
+        "name": "id",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "date",
+        "type": "DATETIME",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "location",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "firstAdministrativeLevel",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "secondAdministrativeLevel",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "severity",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "gps",
+        "type": "GEOGRAPHY",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "deathIn24Hours",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "deathIn30Days",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "injury",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "weather",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "light",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "roadHierarchy",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "speedLimit",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "roadGeometry",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "position",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "roadMaterial",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "roadSurfaceWet",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "roadSurfaceDefect",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "obstacle",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "sightDistance",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "trafficSignal",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "trafficSignalStatus",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "directionDivider",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "normalLaneDivider",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "fastSlowLaneDivider",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "edgeLine",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "crashType",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    }
+]
