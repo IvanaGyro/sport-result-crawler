@@ -22,6 +22,12 @@ export enum Category {
   OPEN = 4,
 }
 
+export enum Round {
+  PRELIMINARY = 1,
+  SEMI_FINAL = 2,
+  FINAL = 3,
+}
+
 export interface GPS {
   lng: number;
   lat: number;
@@ -34,6 +40,7 @@ interface EventParameters {
   event: EventType;
   category: Category;
   division?: string;
+  round?: Round;
   date: luxon.DateTime;
   location?: string;
   gps?: GPS;

@@ -2,7 +2,7 @@ import { transform } from 'stream-transform';
 import { stringify } from 'csv-stringify';
 import fs from 'fs';
 import Event, {
-  Game, Sport, EventType, Category, GPS,
+  Game, Sport, EventType, Category, Round, GPS,
 } from '../Event';
 
 import Record, { Gender, Country } from '../Record';
@@ -45,10 +45,19 @@ function categoryToString(category: Category): string {
   const mapping = {
     [Category.FEMALE]: '女子組',
     [Category.MALE]: '男子組',
-    [Category.MIXED]: '混和',
+    [Category.MIXED]: '混合',
     [Category.OPEN]: '公開組',
   };
   return mapping[category];
+}
+
+function roundToString(round?: Round): string | undefined {
+  const mapping = {
+    [Round.PRELIMINARY]: '預賽',
+    [Round.SEMI_FINAL]: '準決賽',
+    [Round.FINAL]: '決賽',
+  };
+  return round && mapping[round];
 }
 
 function gpsToString(gps?: GPS): string | undefined {
@@ -81,6 +90,7 @@ export default class CSVExporter {
         event: eventTypeToString(curRecord.event.event),
         category: categoryToString(curRecord.event.category),
         division: curRecord.event.division,
+        round: roundToString(curRecord.event.round),
         date: curRecord.event.date.toISO({ includeOffset: false }),
         location: curRecord.event.location,
         gps: gpsToString(curRecord.event.gps),
@@ -107,6 +117,7 @@ export default class CSVExporter {
         { key: 'event', header: '項目' },
         { key: 'category', header: '性別分組' },
         { key: 'division', header: '程度分組' },
+        { key: 'round', header: '比賽階段' },
         { key: 'date', header: '日期' },
         { key: 'location', header: '競賽地點' },
         { key: 'gps', header: 'GPS' },
