@@ -18,7 +18,7 @@ interface RecordParameters {
   name: string;
   gender: Gender;
   isTrans: boolean;
-  age: number;
+  age?: number;
   country: Country;
   institution?: string;
   rank: number;
