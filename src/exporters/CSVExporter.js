@@ -14,8 +14,7 @@ function gameToString(game) {
 }
 function sportToString(sport) {
     const mapping = {
-        [Sport.TRACK]: '徑賽',
-        [Sport.FIELD]: '田賽',
+        [Sport.FIELD_AND_TRACK]: '田徑',
     };
     return mapping[sport];
 }

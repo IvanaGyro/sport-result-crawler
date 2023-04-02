@@ -8,7 +8,7 @@ export default class NIAGParser extends HTMLParser {
     // eslint-disable-next-line class-methods-use-this, @typescript-eslint/no-unused-vars
     async parse(source, verify) {
         const sportMapping = {
-            '400公尺': Sport.TRACK,
+            '400公尺': Sport.FIELD_AND_TRACK,
         };
         const eventMapping = {
             '400公尺': EventType.RUN_400_METRES,

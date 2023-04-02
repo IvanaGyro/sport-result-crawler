@@ -7,8 +7,7 @@ export enum Game {
 }
 
 export enum Sport {
-  TRACK = 1,
-  FIELD = 2,
+  FIELD_AND_TRACK = 1,
 }
 
 export enum EventType {

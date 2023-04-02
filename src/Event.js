@@ -5,8 +5,7 @@ export var Game;
 })(Game || (Game = {}));
 export var Sport;
 (function (Sport) {
-    Sport[Sport["TRACK"] = 1] = "TRACK";
-    Sport[Sport["FIELD"] = 2] = "FIELD";
+    Sport[Sport["FIELD_AND_TRACK"] = 1] = "FIELD_AND_TRACK";
 })(Sport || (Sport = {}));
 export var EventType;
 (function (EventType) {
