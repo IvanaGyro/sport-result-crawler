@@ -3,8 +3,8 @@ import { autoImplements } from './utilities';
 import Event from './Event';
 
 export enum Gender {
-  MALE = 1,
-  FEMALE = 2,
+  FEMALE = 1,
+  MALE = 2,
   NON_BINARY = 3,
 }
 

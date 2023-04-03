@@ -1,8 +1,8 @@
 import { autoImplements } from './utilities';
 export var Gender;
 (function (Gender) {
-    Gender[Gender["MALE"] = 1] = "MALE";
-    Gender[Gender["FEMALE"] = 2] = "FEMALE";
+    Gender[Gender["FEMALE"] = 1] = "FEMALE";
+    Gender[Gender["MALE"] = 2] = "MALE";
     Gender[Gender["NON_BINARY"] = 3] = "NON_BINARY";
 })(Gender || (Gender = {}));
 export var Country;
