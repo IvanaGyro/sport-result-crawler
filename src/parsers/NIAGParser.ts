@@ -1,5 +1,5 @@
 import * as cheerio from 'cheerio';
-import luxon from 'luxon';
+import * as luxon from 'luxon';
 import shortUUID from 'short-uuid';
 import HTMLParser from './HTMLParser';
 import Record, { Gender, Country } from '../Record';

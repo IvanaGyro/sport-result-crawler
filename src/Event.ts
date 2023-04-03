@@ -1,4 +1,4 @@
-import luxon from 'luxon';
+import * as luxon from 'luxon';
 
 import { autoImplements } from './utilities';
 
