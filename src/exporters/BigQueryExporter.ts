@@ -5,6 +5,18 @@ import convict from 'convict';
 import toml from 'toml';
 import AthleteResult from '../AthleteResult';
 
+import { GPS } from '../SportEvent';
+
+import {
+  gameToString,
+  sportToString,
+  eventTypeToString,
+  categoryToString,
+  roundToString,
+  genderToString,
+  countryToString,
+} from '../locales/zh';
+
 convict.addParser({ extension: 'toml', parse: toml.parse });
 
 interface Config {
@@ -69,6 +81,31 @@ interface CorrectCredentialBody extends CredentialBody {
   refresh_token: string;
 }
 
+interface TransformedAthleteResult {
+  id: string;
+  game: string;
+  sport: string;
+  event: string;
+  category: string;
+  division: string | undefined;
+  round: string | undefined;
+  date: string;
+  location: string | undefined;
+  gps: string | undefined;
+  name: string;
+  gender: string;
+  isTrans: boolean;
+  age: number | undefined;
+  country: string | undefined;
+  institution: string | undefined;
+  rank: number;
+  score: number;
+}
+
+function gpsToString(gps?: GPS): string | undefined {
+  return gps && `POINT(${gps.lng} ${gps.lat})`;
+}
+
 export default class BigQueryExporter {
   static bigquery: BigQuery | null = null;
 
@@ -109,36 +146,29 @@ export default class BigQueryExporter {
       throw Error('Fail to auth to Google Cloud or fail to get dataset ID and table ID.');
     }
 
-    let rows: any[] = records.map((record) => record); // TODO
-    rows = [
-      {
-        id: '1234',
-        game: '1234',
-        sport: '1234',
-        event: '1234',
-        category: '1234',
-        division: '1234',
-        round: '1234',
-        date: '2022-09-08 09:00:10',
-        location: '1234',
-        gps: 'POINT(1 1)',
-        name: '1234',
-        gender: '1234',
-        isTrans: false,
-        age: 12,
-        country: '1234',
-        institution: '1234',
-        rank: 5,
-        score: 123.123,
-      },
-    ];
+    const rows: TransformedAthleteResult[] = records.map((athleteResult) => ({
+      id: athleteResult.id,
+      game: gameToString(athleteResult.event.game),
+      sport: sportToString(athleteResult.event.sport),
+      event: eventTypeToString(athleteResult.event.event),
+      category: categoryToString(athleteResult.event.category),
+      division: athleteResult.event.division && athleteResult.event.division,
+      round: athleteResult.event.round && roundToString(athleteResult.event.round),
+      date: athleteResult.event.date.toISO({ includeOffset: false }),
+      location: athleteResult.event.location,
+      gps: athleteResult.event.gps && gpsToString(athleteResult.event.gps),
+      name: athleteResult.name,
+      gender: genderToString(athleteResult.gender),
+      isTrans: athleteResult.isTrans,
+      age: athleteResult.age,
+      country: athleteResult.country && countryToString(athleteResult.country),
+      institution: athleteResult.institution,
+      rank: athleteResult.rank,
+      score: athleteResult.score,
+    }));
 
     // Insert data into a table
-    const result = await this.bigquery
-      .dataset(this.datasetId)
-      .table(this.tableId)
-      .insert(rows);
-    console.log(result);
+    await this.bigquery.dataset(this.datasetId).table(this.tableId).insert(rows);
     console.log(`Inserted ${rows.length} rows`);
   }
 }
