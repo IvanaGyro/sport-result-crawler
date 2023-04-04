@@ -1,18 +1,18 @@
 import { transform } from 'stream-transform';
 import { stringify } from 'csv-stringify';
 import fs from 'fs';
-import Event, {
+import SportEvent, {
   Game, Sport, EventType, Category, Round, GPS,
-} from '../Event';
+} from '../SportEvent';
 
-import Record, { Gender, Country } from '../Record';
+import AthleteResult, { Gender, Country } from '../AthleteResult';
 
 type StringifiedEvent = {
-  [key in keyof Event]: string;
+  [key in keyof SportEvent]: string;
 };
 
 type StringifiedRecord = StringifiedEvent & {
-  [key in keyof Record as Exclude<key, 'event'>]: string;
+  [key in keyof AthleteResult as Exclude<key, 'event'>]: string;
 };
 
 function numberToString(n?: number): string {
@@ -80,8 +80,8 @@ function countryToString(country: Country): string {
 }
 
 export default class CSVExporter {
-  static export(filename: string, records: Record[]): void {
-    const toStringStream = transform(records, (curRecord: Record): StringifiedRecord => {
+  static export(filename: string, records: AthleteResult[]): void {
+    const toStringStream = transform(records, (curRecord: AthleteResult): StringifiedRecord => {
       const transmformedRecord: StringifiedRecord = {
         id: curRecord.id,
         game: gameToString(curRecord.event.game),

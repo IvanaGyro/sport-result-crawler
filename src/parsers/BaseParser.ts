@@ -1,5 +1,5 @@
-import Record from '../Record';
+import AthleteResult from '../AthleteResult';
 
 export default abstract class BaseParser {
-  public abstract parse(source: string, verify: boolean): Promise<Record[]>;
+  public abstract parse(source: string, verify: boolean): Promise<AthleteResult[]>;
 }

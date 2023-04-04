@@ -32,7 +32,7 @@ export interface GPS {
   lat: number;
 }
 
-interface EventParameters {
+interface SportEventParameters {
   id: string;
   game: Game;
   sport: Sport;
@@ -48,4 +48,4 @@ interface EventParameters {
 /**
  * Class of sport events
  */
-export default class Event extends autoImplements<EventParameters>() {}
+export default class SportEvent extends autoImplements<SportEventParameters>() {}

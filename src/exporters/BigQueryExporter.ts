@@ -1,6 +1,6 @@
 import { BigQuery } from '@google-cloud/bigquery';
 import { CredentialBody } from 'google-auth-library';
-import Record from '../Record';
+import AthleteResult from '../AthleteResult';
 
 interface CorrectCredentialBody extends CredentialBody {
   type?: string;
@@ -26,7 +26,7 @@ const credentials: CorrectCredentialBody = {
 };
 
 export default class BigQueryExporter {
-  static async export(records: Record[]): Promise<void> {
+  static async export(records: AthleteResult[]): Promise<void> {
     const bigquery = new BigQuery({
       credentials,
       projectId,

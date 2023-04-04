@@ -2,14 +2,14 @@
 import fs from 'fs';
 import * as luxon from 'luxon';
 import NIAGParser from '../src/parsers/NIAGParser';
-import Record, { Gender, Country } from '../src/Record';
+import AthleteResult, { Gender, Country } from '../src/AthleteResult';
 import {
   Game, Sport, EventType, Category, Round,
-} from '../src/Event';
+} from '../src/SportEvent';
 
 test('parse NIAG records', async () => {
   const testPage = fs.readFileSync('./tests/NIAG2022.html', 'utf8');
-  const records: Record[] = await new NIAGParser().parse(testPage, true);
+  const records: AthleteResult[] = await new NIAGParser().parse(testPage, true);
 
   expect(records.length).toBe(2);
 

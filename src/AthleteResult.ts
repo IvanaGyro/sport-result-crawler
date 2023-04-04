@@ -1,6 +1,6 @@
 import { autoImplements } from './utilities';
 
-import Event from './Event';
+import SportEvent from './SportEvent';
 
 export enum Gender {
   FEMALE = 1,
@@ -12,9 +12,9 @@ export enum Country {
   TAIWAN = 1,
 }
 
-interface RecordParameters {
+interface AthleteResultParameters {
   id: string;
-  event: Event;
+  event: SportEvent;
   name: string;
   gender: Gender;
   isTrans: boolean;
@@ -25,4 +25,4 @@ interface RecordParameters {
   score: number;
 }
 
-export default class Record extends autoImplements<RecordParameters>() {}
+export default class AthleteResult extends autoImplements<AthleteResultParameters>() {}

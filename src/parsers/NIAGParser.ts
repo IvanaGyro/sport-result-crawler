@@ -2,14 +2,14 @@ import * as cheerio from 'cheerio';
 import * as luxon from 'luxon';
 import shortUUID from 'short-uuid';
 import HTMLParser from './HTMLParser';
-import Record, { Gender, Country } from '../Record';
-import Event, {
+import AthleteResult, { Gender, Country } from '../AthleteResult';
+import SportEvent, {
   Game, Sport, EventType, Category, Round,
-} from '../Event';
+} from '../SportEvent';
 
 export default class NIAGParser extends HTMLParser {
   // eslint-disable-next-line class-methods-use-this, @typescript-eslint/no-unused-vars
-  public async parse(source: string, verify: boolean): Promise<Record[]> {
+  public async parse(source: string, verify: boolean): Promise<AthleteResult[]> {
     const sportMapping: { [key: string]: Sport } = {
       '400公尺': Sport.FIELD_AND_TRACK,
     };
@@ -55,7 +55,7 @@ export default class NIAGParser extends HTMLParser {
       },
     );
 
-    const event = new Event({
+    const event = new SportEvent({
       id: shortUUID.generate(),
       game: Game.TAIWAN_INTERCOLLEGIATE_GAMES,
       sport: sportMapping[eventType],
@@ -122,7 +122,7 @@ export default class NIAGParser extends HTMLParser {
           if (name == null) {
             throw Error(`Unexpected name: ${$(cells[nameIndex]).text().trim()}`);
           }
-          return new Record({
+          return new AthleteResult({
             id: shortUUID.generate(),
             event,
             name,
