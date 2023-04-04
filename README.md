@@ -15,6 +15,8 @@ yarn tsc
 
 ## 執行
 
+執行之前必須把 `config.example.toml` 複製到 `config.toml` 並填入對應的設定值
+
 需要編譯之後才能執行
 
 ```
