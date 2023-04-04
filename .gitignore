@@ -11,4 +11,7 @@ yarn-error.log
 ### Project ###
 /data/
 /outputs/
-/coverage/ 
+/coverage/
+/src/**/*.js
+/tests/**/*.js
+index.js
