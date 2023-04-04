@@ -1,0 +1,92 @@
+[
+    {
+        "name": "id",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "game",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "sport",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "event",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "category",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "division",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "round",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "date",
+        "type": "DATETIME",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "location",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "gps",
+        "type": "GEOGRAPHY",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "name",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "gender",
+        "type": "STRING",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "isTrans",
+        "type": "BOOLEAN",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "age",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "country",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "institution",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "name": "rank",
+        "type": "INTEGER",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "score",
+        "type": "FLOAT",
+        "mode": "REQUIRED"
+    }
+]
