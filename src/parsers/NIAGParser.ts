@@ -66,51 +66,29 @@ export default class NIAGParser extends HTMLParser {
       date: eventDate,
     });
 
-    let institutionIndex = -1;
-    let nameIndex = -1;
-    let scoreIndex = -1;
-    let rankIndex = -1;
-    let noteIndex = -1;
-    const headers = $('tr:nth-child(1)', recordTable);
-    $('td', headers).each((i, element) => {
-      const text = $(element).text().trim();
-      switch (text) {
-        case '單  位': {
-          institutionIndex = i;
-          break;
-        }
-        case '姓  名': {
-          nameIndex = i;
-          break;
-        }
-        case '成  績': {
-          scoreIndex = i;
-          break;
-        }
-        case '名  次': {
-          rankIndex = i;
-          break;
-        }
-        case '備  註': {
-          noteIndex = i;
-          break;
-        }
-        default: {
-          break;
-        }
-      }
-    });
-
+    const headers = $('tr:nth-child(1) > td', recordTable)
+      // eslint-disable-next-line func-names
+      .map(function () {
+        return $(this).text().replace(/\s+/gu, '');
+      })
+      .get();
+    const validHeaders = ['單位', '姓名', '成績', '名次', '備註'].every((key) => headers.includes(key));
+    if (!validHeaders) {
+      throw Error(`Invalid headers: ${headers}`);
+    }
     return (
       $('tr', recordTable)
         .slice(1)
         // eslint-disable-next-line func-names
         .map(function () {
-          const cells: cheerio.Cheerio<cheerio.Element> = $('td', this);
-          if ($(cells[noteIndex]).text().trim() === 'DNS') {
+          const row: Record<string, string> = {};
+          $('td', this).each((i, elm) => {
+            row[headers[i]] = $(elm).text().replace(/\s+/gu, '');
+          });
+          if (row['備註'] === 'DNS') {
             return null;
           }
-          const scoreString = $(cells[scoreIndex]).text().trim();
+          const scoreString = row['成績'];
           const scoreRegex = /((\d+):)?(\d+):(\d+(\.\d+)?)/.exec(scoreString);
           if (scoreRegex == null) {
             throw new Error(`Unexpected score: ${scoreString}`);
@@ -118,9 +96,10 @@ export default class NIAGParser extends HTMLParser {
           const hours = scoreRegex[1] || 0;
           const minutes = scoreRegex[3] || 0;
           const seconds = scoreRegex[4] || 0;
-          const name = /\d+([^\d]+)/.exec($(cells[nameIndex]).text().trim())?.[1];
+          const rawName = row['姓名'];
+          const name = /\d+([^\d]+)/.exec(rawName)?.[1];
           if (name == null) {
-            throw Error(`Unexpected name: ${$(cells[nameIndex]).text().trim()}`);
+            throw Error(`Unexpected name: ${rawName}`);
           }
           return new AthleteResult({
             id: shortUUID.generate(),
@@ -129,8 +108,8 @@ export default class NIAGParser extends HTMLParser {
             gender: category === '女生組' ? Gender.FEMALE : Gender.MALE,
             isTrans: false,
             country: Country.TAIWAN,
-            institution: $(cells[institutionIndex]).text().trim(),
-            rank: Number($(cells[rankIndex]).text().trim()),
+            institution: row['單位'],
+            rank: Number(row['名次']),
             score: Number(hours) * 3600 + Number(minutes) * 60 + Number(seconds),
           });
         })
