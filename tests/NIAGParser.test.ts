@@ -4,7 +4,7 @@ import * as luxon from 'luxon';
 import NIAGParser from '../src/parsers/NIAGParser';
 import AthleteResult, { Gender, Country } from '../src/AthleteResult';
 import {
-  Game, Sport, EventType, Category, Round,
+  Game, Sport, Category, Round, FieldAndTrackEvent,
 } from '../src/SportEvent';
 
 test('parse NIAG records', async () => {
@@ -16,7 +16,7 @@ test('parse NIAG records', async () => {
   const actualEvent = {
     game: Game.TAIWAN_INTERCOLLEGIATE_GAMES,
     sport: Sport.FIELD_AND_TRACK,
-    event: EventType.RUN_400_METRES,
+    event: FieldAndTrackEvent.SPRINT_400M,
     category: Category.FEMALE,
     division: '一般',
     round: Round.PRELIMINARY,

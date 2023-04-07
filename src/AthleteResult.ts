@@ -3,13 +3,13 @@ import { autoImplements } from './utilities';
 import SportEvent from './SportEvent';
 
 export enum Gender {
-  FEMALE = 1,
-  MALE = 2,
-  NON_BINARY = 3,
+  FEMALE = 100,
+  MALE,
+  NON_BINARY,
 }
 
 export enum Country {
-  TAIWAN = 1,
+  TAIWAN = 200,
 }
 
 interface AthleteResultParameters {

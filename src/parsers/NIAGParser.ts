@@ -4,7 +4,7 @@ import shortUUID from 'short-uuid';
 import HTMLParser from './HTMLParser';
 import AthleteResult, { Gender, Country } from '../AthleteResult';
 import SportEvent, {
-  Game, Sport, EventType, Category, Round,
+  Game, Sport, EventType, Category, Round, FieldAndTrackEvent,
 } from '../SportEvent';
 
 export default class NIAGParser extends HTMLParser {
@@ -14,7 +14,7 @@ export default class NIAGParser extends HTMLParser {
       '400公尺': Sport.FIELD_AND_TRACK,
     };
     const eventMapping: { [key: string]: EventType } = {
-      '400公尺': EventType.RUN_400_METRES,
+      '400公尺': FieldAndTrackEvent.SPRINT_400M,
     };
     const roundMapping: { [key: string]: Round } = {
       預賽: Round.PRELIMINARY,
