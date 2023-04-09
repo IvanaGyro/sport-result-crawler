@@ -17,6 +17,7 @@ export enum Round {
 
 export enum Game {
   TAIWAN_INTERCOLLEGIATE_GAMES = 500,
+  NTU_MARATHON,
 }
 
 export enum Sport {
@@ -421,6 +422,7 @@ export type EventType =
   | BadmintonEvent
   | WrestlingEvent
   | KarateEvent
+  | JudoEvent
   | ShootingEvent
   | ArcheryEvent
   | BoxingEvent

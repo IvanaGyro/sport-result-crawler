@@ -59,6 +59,7 @@ export default {
   [Round.SEMI_FINAL]: i18n.__('準決賽'),
   [Round.FINAL]: i18n.__('決賽'),
   [Game.TAIWAN_INTERCOLLEGIATE_GAMES]: i18n.__('全大運'),
+  [Game.NTU_MARATHON]: i18n.__('台灣大學馬拉松'),
   [Sport.FIELD_AND_TRACK]: i18n.__('田徑'),
   [Sport.SWIMMING]: i18n.__('游泳'),
   [Sport.WOODBALL]: i18n.__('木球'),
