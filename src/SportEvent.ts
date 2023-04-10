@@ -27,6 +27,7 @@ export enum Sport {
   SOFT_TENNIS,
   TAEKWONDO_POOMSAE,
   TAEKWONDO_SPARRING,
+  TENNIS,
   RUGBY,
   FENCING,
   WEIGHTING,
@@ -44,6 +45,7 @@ export enum Sport {
   CHEER_LEADING,
   CYCLING,
   ORIENTEERING,
+  WUSHU,
   GOLF,
   TAEKWONDO,
   ROLLER_SKATING,
@@ -166,13 +168,20 @@ export enum TaekwondoSparringEvent {
   WEIGHT_CLASS_87KG,
 }
 
+export enum TennisEvent {
+  SINGLES = 1600,
+  DOUBLES,
+  TEAM,
+  MIXED_DOUBLES,
+}
+
 export enum RugbyEvent {
-  SEVENS = 1600,
+  SEVENS = 1700,
   FIFTEENS,
 }
 
 export enum FencingEvent {
-  SABRE_INDIVIDUAL = 1700,
+  SABRE_INDIVIDUAL = 1800,
   SABRE_TEAM,
   EPEE_INDIVIDUAL,
   EPEE_TEAM,
@@ -181,7 +190,7 @@ export enum FencingEvent {
 }
 
 export enum WeightingEvent {
-  WEIGHT_CLASS_45KG = 1800,
+  WEIGHT_CLASS_45KG = 1900,
   WEIGHT_CLASS_49KG,
   WEIGHT_CLASS_55KG,
   WEIGHT_CLASS_59KG,
@@ -218,16 +227,17 @@ export enum WeightingEvent {
 }
 
 export enum RhythmicGymnasticsEvent {
-  ROPE = 1900,
+  ROPE = 2000,
   HOOP,
   BALL,
   CLUBS,
+  UNKNOWN,
   ALL_AROUND_INDIVIDUAL,
   ALL_AROUND_TEAM,
 }
 
 export enum ArtisticGymnaticsEvent {
-  BALANCE_BEAM = 2000,
+  BALANCE_BEAM = 2100,
   FLOOR_EXERCISE,
   UNEVEN_BARS,
   VAULT,
@@ -235,19 +245,20 @@ export enum ArtisticGymnaticsEvent {
   PARALLEL_BARS,
   POMMEL_HORSE,
   HORIZONTAL_BAR,
+  UNKNOWN,
   ALL_AROUND_INDIVIDUAL,
   ALL_AROUND_TEAM,
 }
 
 export enum BadmintonEvent {
-  SINGLES = 2100,
+  SINGLES = 2200,
   DOUBLES,
   TEAM,
   MIXED_DOUBLES,
 }
 
 export enum WrestlingEvent {
-  FREESTYLE_1 = 2200,
+  FREESTYLE_1 = 2300,
   FREESTYLE_2,
   FREESTYLE_3,
   FREESTYLE_4,
@@ -262,14 +273,15 @@ export enum WrestlingEvent {
 }
 
 export enum KarateEvent {
-  WEIGHT_1 = 2300,
+  WEIGHT_1 = 2400,
   WEIGHT_2,
   WEIGHT_3,
   WEIGHT_4,
   WEIGHT_5,
+  UNKNOWN_WEIGHT,
 }
 export enum JudoEvent {
-  WEIGHT_1 = 2400,
+  WEIGHT_1 = 2500,
   WEIGHT_2,
   WEIGHT_3,
   WEIGHT_4,
@@ -280,7 +292,7 @@ export enum JudoEvent {
 }
 
 export enum ShootingEvent {
-  AIR_PISTOL_10M_INDIVIDUAL = 2500,
+  AIR_PISTOL_10M_INDIVIDUAL = 2600,
   AIR_PISTOL_10M_TEAM,
   AIR_PISTOL_MIXED_DOUBLE,
   AIR_RIFLE_10M_INDIVIDUAL,
@@ -289,7 +301,7 @@ export enum ShootingEvent {
 }
 
 export enum ArcheryEvent {
-  RECURVE_BOW_INDIVIDUAL = 2600,
+  RECURVE_BOW_INDIVIDUAL = 2700,
   RECURVE_BOW_TEAM,
   RECURVE_BOW_MIXED_DOUBLE,
   COMPOUND_BOW_INDIVIDUAL,
@@ -298,7 +310,7 @@ export enum ArcheryEvent {
 }
 
 export enum BoxingEvent {
-  WEIGHT_1 = 2700,
+  WEIGHT_1 = 2800,
   WEIGHT_2,
   WEIGHT_3,
   WEIGHT_4,
@@ -306,16 +318,18 @@ export enum BoxingEvent {
   WEIGHT_6,
   WEIGHT_7,
   WEIGHT_8,
+  WEIGHT_9,
+  WEIGHT_10,
 }
 export enum TableTennisEvent {
-  SINGLES = 2800,
+  SINGLES = 2900,
   DOUBLES,
   TEAM,
   MIXED_DOUBLES,
 }
 
 export enum RowingEvent {
-  SINGLE_SCULL = 2900,
+  SINGLE_SCULL = 3000,
   LIGHTWEIGHT_SINGLE_SCULL,
   LIGHTWEIGHT_DOUBLE_SCULL,
   DOUBLE_SCULL,
@@ -325,7 +339,7 @@ export enum RowingEvent {
 }
 
 export enum CheerLeadingEvent {
-  FIVE_PERSON_TEAM = 3000,
+  FIVE_PERSON_TEAM = 3100,
   TEAM,
   HIPHOP_TWO_PERSON_TEAM,
   HIPHOP_TEAM,
@@ -333,7 +347,7 @@ export enum CheerLeadingEvent {
 }
 
 export enum CyclingEvent {
-  SPRINT_RACE = 3100,
+  SPRINT_RACE = 3200,
   INDIVIDUAL_ALL_AROUND,
   INDIVIDUAL_PURSUIT,
   TEAM_PURSUIT,
@@ -343,17 +357,31 @@ export enum CyclingEvent {
 
 // 定向越野
 export enum OrienteeringEvent {
-  SHORT_DISTANCE_INDIVIDUAL = 3200,
+  SHORT_DISTANCE_INDIVIDUAL = 3300,
   MIXED_RELAY,
 }
 
+export enum WushuEvent {
+  WEIGHT_CLASS_52KG = 3400,
+  WEIGHT_CLASS_56KG,
+  WEIGHT_CLASS_60KG,
+  WEIGHT_CLASS_65KG,
+  WEIGHT_CLASS_70KG,
+  WEIGHT_CLASS_75KG,
+  TAIJIQUAN_SWORD,
+  CHANGQUAN,
+  NANQUAN_KNIFE,
+  NANQUAN_STICK,
+  KNIFE_STICK,
+}
+
 export enum GolfEvent {
-  INDIVIDUAL = 3300,
+  INDIVIDUAL = 3500,
   TEAM,
 }
 
 export enum TaekwondoEvent {
-  KG_46 = 3400,
+  KG_46 = 3600,
   KG_49,
   KG_53,
   KG_57,
@@ -375,7 +403,7 @@ export enum TaekwondoEvent {
 }
 
 export enum RollerSkatingEvent {
-  POINT_RACE_10K = 3500,
+  POINT_RACE_10K = 3700,
   SPEED_RACE_1000,
   ELIMINATION_RACE_15K,
   AMERICAN_RELAY_3000,
@@ -385,17 +413,17 @@ export enum RollerSkatingEvent {
 }
 
 export enum ESportsEvent {
-  LOL = 3600,
+  LOL = 3800,
   HEARTHSTONE,
 }
 
 export enum BilliardsEvent {
-  NO9_BALL_INDIVIDUAL = 3700,
+  NO9_BALL_INDIVIDUAL = 3900,
   NO9_BALL_DOUBLES,
 }
 
 export enum CanoeingEvent {
-  C1_200M = 3800,
+  C1_200M = 4000,
   K1_200M,
   C2_500M,
   K1_500M,
@@ -414,6 +442,7 @@ export type EventType =
   | SoftTennisEvent
   | TaekwondoPoomsaeEvent
   | TaekwondoSparringEvent
+  | TennisEvent
   | RugbyEvent
   | FencingEvent
   | WeightingEvent
@@ -431,6 +460,7 @@ export type EventType =
   | CheerLeadingEvent
   | CyclingEvent
   | OrienteeringEvent
+  | WushuEvent
   | GolfEvent
   | TaekwondoEvent
   | RollerSkatingEvent

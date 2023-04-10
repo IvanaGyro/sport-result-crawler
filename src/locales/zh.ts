@@ -1,5 +1,5 @@
 import {
-  Game, Sport, EventType, Category, Round,
+  Game, Sport, EventType, Category, Round, FieldAndTrackEvent,
 } from '../SportEvent';
 
 import { Gender, Country } from '../AthleteResult';
@@ -20,7 +20,7 @@ function sportToString(sport: Sport): string {
 
 function eventTypeToString(eventType: EventType): string {
   const mapping = {
-    [EventType.RUN_400_METRES]: '400 公尺',
+    [FieldAndTrackEvent.SPRINT_400M]: '400 公尺',
   };
   return mapping[eventType];
 }
