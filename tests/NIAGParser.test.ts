@@ -127,7 +127,7 @@ test.each([
 });
 
 test('parse different score formats', async () => {
-  const testPage = fs.readFileSync('./tests/NIGA-history-scores.html', 'utf8');
+  const testPage = fs.readFileSync('./tests/NIAG-history-scores.html', 'utf8');
   const records: AthleteResult[] = await new NIAGParser().parseHistoryResults(testPage);
 
   expect(records.length).toBe(13);
@@ -147,6 +147,28 @@ test('parse different score formats', async () => {
     { score: 15 },
     { score: 1074 },
   ]);
+});
+
+test('parse different formats of date', async () => {
+  const testPage = fs.readFileSync('./tests/NIAG-history-dates.html', 'utf8');
+  const results: AthleteResult[] = await new NIAGParser().parseHistoryResults(testPage);
+
+  expect(results.length).toBe(6);
+
+  const expectDates = ['2022-05-11', '2021-10-25', '2021-05-14', '2020-11-01', '2019-05-01'].map(
+    (dateString) => luxon.DateTime.fromFormat(dateString, 'yyyy-MM-dd', {
+      zone: 'Asia/Taipei',
+    }),
+  );
+
+  // Date of 2019 擊劍 is recorded as "2019-"
+  expectDates.push(
+    luxon.DateTime.fromFormat('2019', 'yyyy', {
+      zone: 'Asia/Taipei',
+    }),
+  );
+
+  expect(results).toMatchObject(expectDates.map((date) => ({ event: { date } })));
 });
 
 test('parse different event types', async () => {

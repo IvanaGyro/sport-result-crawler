@@ -851,6 +851,19 @@ export default class NIAGParser extends HTMLParser {
         // score
         const score = NIAGParser.parseScore(result['成績']);
 
+        // date
+        const [year, month, day] = result['日期'].split('-');
+        const date = luxon.DateTime.fromObject(
+          {
+            year: Number(year),
+            month: Number(month) || 1,
+            day: Number(day) || 1,
+          },
+          {
+            zone: 'Asia/Taipei',
+          },
+        );
+
         return new AthleteResult({
           id: shortUUID.generate(),
           event: new SportEvent({
@@ -861,9 +874,7 @@ export default class NIAGParser extends HTMLParser {
             category,
             division,
             round: undefined,
-            date: luxon.DateTime.fromFormat(result['日期'], 'yyyy-MM-dd', {
-              zone: 'Asia/Taipei',
-            }),
+            date,
           }),
           name: result['選手'],
           // Fix this for MIXED
