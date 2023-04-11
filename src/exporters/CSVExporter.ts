@@ -4,15 +4,7 @@ import fs from 'fs';
 import SportEvent, { GPS } from '../SportEvent';
 
 import AthleteResult from '../AthleteResult';
-import {
-  gameToString,
-  sportToString,
-  eventTypeToString,
-  categoryToString,
-  roundToString,
-  genderToString,
-  countryToString,
-} from '../locales/zh';
+import enumToString from '../EnumToString';
 
 type StringifiedEvent = {
   [key in keyof SportEvent]: string;
@@ -31,27 +23,27 @@ function gpsToString(gps?: GPS): string | undefined {
 }
 
 export default class CSVExporter {
-  static export(filename: string, records: AthleteResult[]): void {
-    const toStringStream = transform(records, (curRecord: AthleteResult): StringifiedRecord => {
+  static export(filename: string, results: AthleteResult[]): void {
+    const toStringStream = transform(results, (result: AthleteResult): StringifiedRecord => {
       const transmformedRecord: StringifiedRecord = {
-        id: curRecord.id,
-        game: gameToString(curRecord.event.game),
-        sport: sportToString(curRecord.event.sport),
-        event: eventTypeToString(curRecord.event.event),
-        category: categoryToString(curRecord.event.category),
-        division: curRecord.event.division,
-        round: roundToString(curRecord.event.round),
-        date: curRecord.event.date.toISO({ includeOffset: false }),
-        location: curRecord.event.location,
-        gps: gpsToString(curRecord.event.gps),
-        name: curRecord.name,
-        gender: genderToString(curRecord.gender),
-        isTrans: curRecord.isTrans ? '是' : '不是',
-        age: numberToString(curRecord.age),
-        country: countryToString(curRecord.country),
-        institution: curRecord.institution,
-        rank: numberToString(curRecord.rank),
-        score: numberToString(curRecord.score),
+        id: result.id,
+        game: enumToString(result.event.game),
+        sport: enumToString(result.event.sport),
+        event: enumToString(result.event.event),
+        category: enumToString(result.event.category),
+        division: result.event.division,
+        round: enumToString(result.event.round),
+        date: result.event.date.toISO({ includeOffset: false }),
+        location: result.event.location,
+        gps: gpsToString(result.event.gps),
+        name: result.name,
+        gender: enumToString(result.gender),
+        isTrans: result.isTrans ? '是' : '不是',
+        age: numberToString(result.age),
+        country: enumToString(result.country),
+        institution: result.institution,
+        rank: numberToString(result.rank),
+        score: numberToString(result.score),
       };
       return transmformedRecord;
     });

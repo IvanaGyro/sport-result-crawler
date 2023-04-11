@@ -48,7 +48,7 @@ i18n.configure({
   directory: fileURLToPath(new URL('../locales', import.meta.url).toString()),
 });
 
-export default {
+const mapping = {
   [Gender.FEMALE]: i18n.__('女'),
   [Gender.MALE]: i18n.__('男'),
   [Gender.NON_BINARY]: i18n.__('非二元'),
@@ -378,3 +378,7 @@ export default {
   [CanoeingEvent.K1_1000M]: i18n.__('1000 公尺K1'),
   [CanoeingEvent.K2_1000M]: i18n.__('1000 公尺K2'),
 };
+
+export default <T extends keyof typeof mapping | undefined>(key: T) =>
+  // eslint-disable-next-line implicit-arrow-linebreak
+  (key == null ? undefined : mapping[key!]) as T extends undefined ? undefined : string;

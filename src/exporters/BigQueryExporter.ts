@@ -7,15 +7,7 @@ import AthleteResult from '../AthleteResult';
 
 import { GPS } from '../SportEvent';
 
-import {
-  gameToString,
-  sportToString,
-  eventTypeToString,
-  categoryToString,
-  roundToString,
-  genderToString,
-  countryToString,
-} from '../locales/zh';
+import enumToString from '../EnumToString';
 
 convict.addParser({ extension: 'toml', parse: toml.parse });
 
@@ -148,20 +140,20 @@ export default class BigQueryExporter {
 
     const rows: TransformedAthleteResult[] = records.map((athleteResult) => ({
       id: athleteResult.id,
-      game: gameToString(athleteResult.event.game),
-      sport: sportToString(athleteResult.event.sport),
-      event: eventTypeToString(athleteResult.event.event),
-      category: categoryToString(athleteResult.event.category),
-      division: athleteResult.event.division && athleteResult.event.division,
-      round: athleteResult.event.round && roundToString(athleteResult.event.round),
+      game: enumToString(athleteResult.event.game),
+      sport: enumToString(athleteResult.event.sport),
+      event: enumToString(athleteResult.event.event),
+      category: enumToString(athleteResult.event.category),
+      division: athleteResult.event.division,
+      round: enumToString(athleteResult.event.round),
       date: athleteResult.event.date.toISO({ includeOffset: false }),
       location: athleteResult.event.location,
-      gps: athleteResult.event.gps && gpsToString(athleteResult.event.gps),
+      gps: gpsToString(athleteResult.event.gps),
       name: athleteResult.name,
-      gender: genderToString(athleteResult.gender),
+      gender: enumToString(athleteResult.gender),
       isTrans: athleteResult.isTrans,
       age: athleteResult.age,
-      country: athleteResult.country && countryToString(athleteResult.country),
+      country: enumToString(athleteResult.country),
       institution: athleteResult.institution,
       rank: athleteResult.rank,
       score: athleteResult.score,
